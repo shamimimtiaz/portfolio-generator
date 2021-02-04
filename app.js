@@ -1,26 +1,45 @@
 
-const fs = require ('fs');
-const generatePage = require ('./src/page-template')
-var profileDataArgs = process.argv.slice(2);
-//console.log(profileDataArgs);
+const inquirer = require('inquirer');
+//console.log(inquirer);
+//const fs = require ('fs');
+//const generatePage = require ('./src/page-template')
 
-//const name = profileDataArgs[0];
-//const github = profileDataArgs[1];
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    }
+  ])
+  .then(answers => console.log(answers));
+
+
+
+
+
+
+
+/*var profileDataArgs = process.argv.slice(2);
+console.log(profileDataArgs);
+
+const name = profileDataArgs[0];
+const github = profileDataArgs[1];
 //or
-const [name, github] = profileDataArgs;
+const [name, github] = profileDataArgs;*/
 
-
+//const pageHTML = generatePage(name, github);
 
 //console.log(generatePage('Shamim', 'shamimhub'));
 
 //fs.writeFile() function definition has three arguments. The first argument is the name of the file that's being created. The next argument is the data that will write onto the file, in this case the HTML template literal. The last parameter is a callback function that will be used for error handling.
 
-fs.writeFile('./index.html', generatePage(name, github), err => {
-  if (err) throw new Error(err);
+//fs.writeFile('./index.html', pageHTML, err => {
+// if (err) throw err;
 
-  console.log('Portfolio complete! Check out index.html to see the output!');
+//console.log('Portfolio complete! Check out index.html to see the output!');
   
-});
+//});
 
 
 
